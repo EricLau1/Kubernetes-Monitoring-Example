@@ -65,5 +65,3 @@ kubectl apply -f jobs/
 ```bash
 kubectl delete -f jobs/
 ```
-
-###

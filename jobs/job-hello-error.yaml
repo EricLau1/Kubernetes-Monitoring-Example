@@ -10,3 +10,4 @@ spec:
         image: busybox:1.28
         command: ["sh", "-c", "exit 1"]
       restartPolicy: Never
+  backoffLimit: 0
