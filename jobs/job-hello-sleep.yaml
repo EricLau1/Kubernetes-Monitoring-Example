@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: hello-world
+  name: hello-sleep
 spec:
   template:
     metadata:
@@ -9,10 +9,10 @@ spec:
         app: job
     spec:
       containers:
-      - name: hello-world
+      - name: hello-sleep
         image: busybox:1.28
         command:
           - /bin/sh
           - -c
-          - echo Hello World!
+          - echo Sleeping... && sleep 31
       restartPolicy: Never

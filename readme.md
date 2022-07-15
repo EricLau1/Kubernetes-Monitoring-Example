@@ -65,3 +65,27 @@ kubectl apply -f jobs/
 ```bash
 kubectl delete -f jobs/
 ```
+
+### Default KubeJobCompletion Query
+
+```bash
+kube_job_spec_completions{job="kube-state-metrics",namespace=~".*"} - kube_job_status_succeeded{job="kube-state-metrics",namespace=~".*"} > 0
+```
+
+### Default KubeJobFailed Query
+
+```bash
+kube_job_failed{job="kube-state-metrics",namespace=~".*"} > 0
+```
+
+### Apply Custom Values
+
+```bash
+helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack -f values.yaml
+```
+
+### Check Only One Job Completion
+
+```bash
+kube_job_spec_completions{job="kube-state-metrics",namespace=~".*", job_name=~"hello-sleep.*"} - kube_job_status_succeeded{job="kube-state-metrics",namespace=~".*"} > 0
+```

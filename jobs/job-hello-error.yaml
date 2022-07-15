@@ -4,6 +4,9 @@ metadata:
   name: hello-error
 spec:
   template:
+    metadata:
+      labels:
+        app: job
     spec:
       containers:
       - name: hello-error

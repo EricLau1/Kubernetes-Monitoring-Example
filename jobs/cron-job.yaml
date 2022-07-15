@@ -1,19 +1,22 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: hello-slow
+  name: hello-cron
 spec:
-  schedule: "* * * * *"
+  schedule: "*/2 * * * *"
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: job
         spec:
           containers:
-          - name: hello-slow
+          - name: hello-cron
             image: busybox:1.28
             imagePullPolicy: IfNotPresent
             command:
             - /bin/sh
             - -c
-            - echo Hello... && sleep 30
+            - date; uname -a
           restartPolicy: Never

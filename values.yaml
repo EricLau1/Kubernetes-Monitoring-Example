@@ -1,0 +1,8 @@
+prometheus-node-exporter:
+  service:
+    portName: http-metrics
+  prometheus:
+    monitor:
+      enabled: true
+      jobLabel: jobLabel
+      interval: "5s"
