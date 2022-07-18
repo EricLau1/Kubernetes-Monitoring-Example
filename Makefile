@@ -1,10 +1,12 @@
 install:
-	helm install prometheus-stack prometheus-community/kube-prometheus-stack
+	helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+	helm repo update
+	helm install prometheus prometheus-community/kube-prometheus-stack
 
 upgrade:
-	helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack -f values.yaml
+	helm upgrade prometheus prometheus-community/kube-prometheus-stack -f custom-values.yaml
 
-serve:
+pf:
 	kubectl port-forward svc/prometheus-operated 9090:9090
 
 run-jobs:
@@ -19,3 +21,5 @@ watch-jobs:
 del-jobs:
 	kubectl delete -f jobs/
 
+uninstall:
+	helm delete prometheus

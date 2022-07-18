@@ -11,7 +11,7 @@ REF: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-p
 ### Start minikube
 
 ```bash
-minikube start --kubernetes-version=v1.18.20 --cpus 7 --memory 8096
+minikube start --kubernetes-version=v1.18.20
 ```
 
 ### Add Chart for Prometheus

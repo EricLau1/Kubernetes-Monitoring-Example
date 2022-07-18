@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: hello-cron
 spec:
-  schedule: "*/2 * * * *"
+  schedule: "* * * * *"
   jobTemplate:
     spec:
       template:
@@ -18,5 +18,5 @@ spec:
             command:
             - /bin/sh
             - -c
-            - date; uname -a
+            - echo Processing... && sleep 30 
           restartPolicy: Never
